@@ -7,11 +7,28 @@ def square_matrix(num: int) -> list:
     return matrix
 
 
-def regular_matrix(num1: int, num2: int, char: int | str) -> list:
-    '''создаёт матрицу размерами num1 x num2 и заполняет символом(char) '''
+def regular_matrix(num1: int, num2: int, char=0) -> list:
+    '''создаёт матрицу размерами num1 x num2 и заполняет символом(char(по умолчанию 0)) '''
 
     matrix = [[char] * num2 for _ in range(num1)]
     return matrix
+
+
+def sum_matrix(matrix_1: list, matrix_2: list) -> list:
+    result = regular_matrix(n, m)
+    for i in range(n):
+        for j in range(m):
+            result[i][j] = matrix_1[i][j] + matrix_2[i][j]
+    return result
+
+
+def multiplication_matrix(matrix_1: list, matrix_2: list) -> list:
+    result = regular_matrix(n,k)
+    for i in range(n):
+        for j in range(k):
+            result[i][j] = matrix_1[i][0]*matrix_2[0][j] + matrix_1[i][1]*matrix_2[1][j]
+
+    return result
 
 
 def side_diagonal_0_and_2():
@@ -36,5 +53,9 @@ def filling_the_matrix_in_order(num1: int, num2: int) -> list:
 
 if __name__ == '__main__':
     n, m = [int(i) for i in input().split()]
-    for row in filling_the_matrix_in_order(n, m):
+    m1 = [[int(i) for i in input().split()] for _ in range(n)]
+    spase = input()
+    m,k = [int(i) for i in input().split()]
+    m2 = [[int(i) for i in input().split()] for _ in range(m)]
+    for row in multiplication_matrix(m1, m2):
         print(*row)
