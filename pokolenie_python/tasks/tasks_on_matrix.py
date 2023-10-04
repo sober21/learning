@@ -25,8 +25,11 @@ def sum_matrix(matrix_1: list, matrix_2: list) -> list:
 def multiplication_matrix(matrix_1: list, matrix_2: list) -> list:
     result = regular_matrix(n,k)
     for i in range(n):
+        sum = 0
         for j in range(k):
-            result[i][j] = matrix_1[i][0]*matrix_2[0][j] + matrix_1[i][1]*matrix_2[1][j]
+            for h in range(m):
+                sum += matrix_1[i][h]*matrix_2[h][j]
+            result[i][j] = sum
 
     return result
 
